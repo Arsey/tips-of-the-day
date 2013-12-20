@@ -25,7 +25,6 @@
         "underscore": "latest",
         "async": "latest",
         "view-helpers": "latest",
-        "mean-logger": "latest",
         "forever": "latest",
         "bower": "latest",
         "grunt": "latest",

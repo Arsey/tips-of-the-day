@@ -13,5 +13,3 @@ To get started
 Install dependencies:
 
 $ npm install
-
-$ bower install

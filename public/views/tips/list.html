@@ -1,0 +1,10 @@
+<section data-ng-controller="TipsController" data-ng-init="find()">
+	<ul class="articles unstyled">
+		<li data-ng-repeat="tip in tips">
+			<span>{{tip.created | date:'medium'}}</span> /
+			<div>{{tip.text}}</div>
+            <hr/>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!tips || tips.length">No tips yet. <br> Why don't you <a href="/#!/tips/create">Create One</a>?</h1>
+</section>
