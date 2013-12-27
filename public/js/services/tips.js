@@ -1,10 +1,10 @@
 //Tips service used for articles REST endpoint
 angular.module('tips.tips').factory("Tips", ['$resource', function($resource) {
-    return $resource('tips/:articleId', {
-        articleId: '@_id'
+    return $resource('tips/:tipId', {
+        tipId: '@_id'
     }, {
         update: {
-            method: 'PUT'
+            method: 'POST'
         }
     });
 }]);

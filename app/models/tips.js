@@ -16,6 +16,11 @@ var TipSchema = new Schema({
         default: '',
         trim: true
     },
+    category: {
+        type: String,
+        default: '',
+        trim: true
+    },
     likes: {
         type: Number,
         default: 0

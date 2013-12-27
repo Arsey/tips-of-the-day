@@ -3,10 +3,13 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
 
     $scope.create = function () {
         var tips = new Tips({
-            text: this.text
+            text: this.text,
+            likes: this.likes,
+            category: this.category
         });
+        console.log(tips);
         tips.$save(function (response) {
-            $location.path("tips/" + response._id);
+            $location.path("/");
         });
 
         this.title = "";
@@ -17,4 +20,16 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
             $scope.tips = tips;
         });
     };
+
+    $scope.addlike = function(tip){
+        tip.likes++;
+        var tip_id = tip._id;
+        var tips = new Tips({
+            _id: tip_id
+        });
+        tips.$update(function (response) {
+            $location.path("/");
+         });
+    };
+    
 }]);

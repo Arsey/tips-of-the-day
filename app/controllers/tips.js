@@ -45,4 +45,20 @@ exports.all = function (req, res) {
     });
 }
 
+/**
+ * Add like
+ */
 
+exports.addlike = function(req, res){
+    var tip = new Tip({
+        _id: req.body._id
+    });
+    tip.update({$inc: {likes: 1}}, function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.jsonp(tip);
+        }
+    });
+    console.log("added like for: " + req.body._id);
+}

@@ -1,8 +1,10 @@
 <section data-ng-controller="TipsController" data-ng-init="find()">
 	<ul class="articles unstyled">
-		<li data-ng-repeat="tip in tips">
-			<span>{{tip.created | date:'medium'}}</span> /
-			<div>{{tip.text}}</div>
+		<li data-ng-click="addlike(tip)" class="size-{{tip.likes}}" data-ng-repeat="tip in tips" _id="{{tip._id}}">
+			<span>{{tip.created | date:'medium'}}</span> <br />
+			category: <span>{{tip.category}}</span><br/>
+			text: <div>{{tip.text}}</div>
+			likes: <span>{{tip.likes}}</span>
             <hr/>
 		</li>
 	</ul>
