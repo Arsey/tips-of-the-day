@@ -18,12 +18,23 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
     $scope.find = function () {
         Tips.query(function (tips) {
             $scope.tips = tips;
+            $scope.$watch('tips', function(){
+                    $('.isotope-element').each(function(){
+                        
+                    });
+                    $('#isotope-container').isotope({
+                      itemSelector : '.isotope-element',
+                      layoutMode : 'fitRows'
+                    });
+                }
+            );
         });
     };
 
     $scope.addlike = function(tip){
         tip.likes++;
         var tip_id = tip._id;
+        console.log(tip);
         var tips = new Tips({
             _id: tip_id
         });

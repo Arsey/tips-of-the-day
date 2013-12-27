@@ -23,3 +23,13 @@ footer {
 footer p {
     padding:5px 0 12px 10px
 }
+.articles li{
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+    border: 1px gray solid;
+    border-radius: 5px;
+    background-color: #ccc;
+    box-shadow: 1px 1px 1px gray;
+    overflow: hidden;
+}

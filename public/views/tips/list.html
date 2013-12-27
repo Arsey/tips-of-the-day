@@ -1,11 +1,11 @@
 <section data-ng-controller="TipsController" data-ng-init="find()">
-	<ul class="articles unstyled">
-		<li data-ng-click="addlike(tip)" class="size-{{tip.likes}}" data-ng-repeat="tip in tips" _id="{{tip._id}}">
+	<ul class="articles unstyled" id="isotope-container">
+		<li data-ng-click="addlike(tip)" data-ng-size={{tip.likes}} class="isotope-element" data-ng-repeat="tip in tips" _id="{{tip._id}}">
 			<span>{{tip.created | date:'medium'}}</span> <br />
 			category: <span>{{tip.category}}</span><br/>
-			text: <div>{{tip.text}}</div>
 			likes: <span>{{tip.likes}}</span>
-            <hr/>
+			<hr/>
+			text: <div>{{tip.text}}</div>
 		</li>
 	</ul>
 	<h1 data-ng-hide="!tips || tips.length">No tips yet. <br> Why don't you <a href="/#!/tips/create">Create One</a>?</h1>
