@@ -1,0 +1,9 @@
+<section data-ng-controller="CategoryController" data-ng-init="find()">
+	<ul class="articles unstyled" id="isotope-container">
+		<li data-ng-repeat="category in categorys" _id="{{category._id}}">
+			category: <span>{{category.name}}</span><br/>
+			<hr/>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!categorys || categorys.length">No tips yet. <br> Why don't you <a href="/#!/categorys/create">Create One</a>?</h1>
+</section>

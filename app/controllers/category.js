@@ -28,11 +28,12 @@ exports.create = function (req, res) {
  */
 
 exports.all = function (req, res) {
-    Category.find().sort('-likes').exec(function (err, category) {
+    console.log(Category);
+    Category.find().exec(function (err, сategory) {
         if (err) {
             console.log(err);
         } else {
-            res.jsonp(category)
+            res.jsonp(сategory)
         }
     });
 }

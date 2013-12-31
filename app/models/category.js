@@ -6,12 +6,17 @@ var mongoose = require('mongoose'),
  *Tip schema
  */
 
-var CategorySchema = new Schema({
-    name: {
-        type: String,
-        default: 'noname',
-    },
-});
+var CategorySchema = new Schema(
+	{
+	    name: {
+	        type: String,
+	        default: 'noname',
+	    }
+	},
+	{
+    	collection: 'category'
+    }
+);
 
 /**
  * Validations

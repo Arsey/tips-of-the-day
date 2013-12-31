@@ -36,6 +36,7 @@ exports.show = function (req, res) {
  */
 
 exports.all = function (req, res) {
+    console.log(Tip);
     Tip.find().sort('-likes').exec(function (err, tips) {
         if (err) {
             console.log(err);
