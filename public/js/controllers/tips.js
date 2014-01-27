@@ -15,19 +15,28 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
         this.title = "";
     };
 
+   
+
     $scope.find = function () {
+        console.log($scope);
         Tips.query(function (tips) {
             $scope.tips = tips;
-            $scope.$watch('tips', function(){
-                    $('.isotope-element').each(function(){
-                        
-                    });
-                    $('#isotope-container').isotope({
+
+            
+if($scope.$last){
+ $timeout(function() {
+    alert()
+     $('#isotope-container').isotope({
                       itemSelector : '.isotope-element',
-                      layoutMode : 'fitRows'
-                    });
-                }
-            );
+                        layoutMode : 'fitRows',
+                        sortBy: 'number',
+                        sortAscending: true
+    });
+
+ },100);
+}           
+
+
         });
     };
 
@@ -43,4 +52,20 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
          });
     };
     
-}]);
+}])
+.directive('lalalaDirective',function($timeout){
+
+    $timeout(function initIsotope() {
+
+        $('#isotope-container').isotope({
+            itemSelector : '.isotope-element',
+            layoutMode : 'fitRows',
+            sortBy: 'number',
+            sortAscending: true
+        });
+
+    },100)
+
+     return {};
+
+});

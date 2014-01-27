@@ -1,9 +1,13 @@
 <section data-ng-controller="TipsController" data-ng-init="find()">
 	<ul class="articles unstyled" id="isotope-container">
-		<li data-ng-click="addlike(tip)" data-ng-size={{tip.likes}} class="isotope-element" data-ng-repeat="tip in tips" _id="{{tip._id}}">
+		<li data-ng-click="addlike(tip)" data-ng-size={{tip.likes}} class="isotope-element" data-ng-repeat="tip in tips" _id="{{tip._id}}" lalala-directive>
+			<p class="navbar-text navbar-right">Date<a href="#" class="navbar-link">{{tip.created | date:'medium'}}</a></p>
 			<span>{{tip.created | date:'medium'}}</span> <br />
 			category: <span>{{tip.category}}</span><br/>
-			likes: <span>{{tip.likes}}</span>
+			likes: <span data-likes="{{tip.likes}}">{{tip.likes}}</span>
+
+
+
 			<hr/>
 			text: <div>{{tip.text}}</div>
 		</li>
