@@ -15,32 +15,26 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
         this.title = "";
     };
 
-   
 
     $scope.find = function () {
-        console.log($scope);
         Tips.query(function (tips) {
             $scope.tips = tips;
 
-            
-if($scope.$last){
- $timeout(function() {
-    alert()
-     $('#isotope-container').isotope({
-                      itemSelector : '.isotope-element',
-                        layoutMode : 'fitRows',
+            $scope.$watch('tips', function () {
+                $scope.$evalAsync(function () {
+                    $('#isotope-container').isotope({
+                        itemSelector: '.isotope-element',
+                        layoutMode: 'fitRows',
                         sortBy: 'number',
                         sortAscending: true
-    });
-
- },100);
-}           
-
+                    });
+                });
+            })
 
         });
     };
 
-    $scope.addlike = function(tip){
+    $scope.addlike = function (tip) {
         tip.likes++;
         var tip_id = tip._id;
         console.log(tip);
@@ -49,23 +43,7 @@ if($scope.$last){
         });
         tips.$update(function (response) {
             $location.path("/");
-         });
-    };
-    
-}])
-.directive('lalalaDirective',function($timeout){
-
-    $timeout(function initIsotope() {
-
-        $('#isotope-container').isotope({
-            itemSelector : '.isotope-element',
-            layoutMode : 'fitRows',
-            sortBy: 'number',
-            sortAscending: true
         });
+    };
 
-    },100)
-
-     return {};
-
-});
+}])
