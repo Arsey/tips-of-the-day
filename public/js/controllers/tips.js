@@ -7,7 +7,6 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
             likes: this.likes,
             category: this.category
         });
-        console.log(tips);
         tips.$save(function (response) {
             $location.path("/");
         });
@@ -15,11 +14,27 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
         this.title = "";
     };
 
+    $scope.edit = function () {
+        $scope.tip = tip;
+        var tipId = $location.hash();
+        console.log("tipId: ",tipId);
+        var tip = new Tips({
+            _id: tipId
+        });
+        console.log(tip);
+        // tips.$update(function (response) {
+        //     $location.path("/");
+        // });
+    };
 
-    $scope.find = function () {
+
+    $scope.show = function () {
         Tips.query(function (tips) {
             $scope.tips = tips;
 
+            tips.linkEdit = 'tips/edit/#';
+
+            // show tips size
             function Settings (minLikes, maxLikes) {
                 var that = this;
                 that.size = {
@@ -59,10 +74,10 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
             })
 
         });
+
     };
 
     $scope.addlike = function (tip) {
-
         tip.likes++;
         var tip_id = tip._id;
         var tips = new Tips({

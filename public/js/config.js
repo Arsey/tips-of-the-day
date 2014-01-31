@@ -2,6 +2,9 @@
 angular.module('tips').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
+        when('/tips/edit', {
+            templateUrl: 'views/tips/edit.html'
+        }).
         when('/tips/create', {
             templateUrl: 'views/tips/create.html'
         }).

@@ -1,12 +1,12 @@
 <section data-ng-controller="TipsController">
-	<form class="form-horizontal" data-ng-submit="create()">
+	<form class="form-horizontal" data-ng-submit="saveChange()" data-ng-init="edit()">
 		<div class="control-group">
-			<div class="control-label" for="text">Added new tips:</div>
+			<div class="control-label" for="text">Edit tips: {{tip._id}}</div>
 			<div class="controls">
 				<label>Likes:</label>
 				<input data-ng-model="likes" id="likes" type="number" placeholder="likes" />
 				<label>Category:</label>
-				<input data-ng-model="category" id="category" placeholder="Category" />
+				<input data-ng-model="category" id="category" placeholder="Category"/>
 				<label>Text:</label>
 				<textarea data-ng-model="text" id="text" cols="30" rows="10" placeholder="Text"></textarea>
 			</div>
