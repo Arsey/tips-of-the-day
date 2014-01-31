@@ -20,14 +20,41 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
         Tips.query(function (tips) {
             $scope.tips = tips;
 
+            function Settings (minLikes, maxLikes) {
+                var that = this;
+                that.size = {
+                    min: 26,
+                    max: 300
+                };
+                that.maxLikes = maxLikes;
+                that.minLikes = tips[0].likes;
+                that.valueOfdivision = (function(){
+                    return (that.size.max - that.size.min)/that.maxLikes
+                })()
+            }
+
+            function startIsotope(){
+                var el = $('#isotope-container');
+                el.isotope({
+                    itemSelector: '.isotope-element',
+                    layoutMode: 'fitRows',
+                    sortBy: 'number',
+                    sortAscending: true,
+                });
+                return el;
+            }
+
+            var maxLikes = 0;
+            var minLikes = 0;
+            for (var i = 0; i < tips.length; i++) {
+                if(maxLikes <= tips[i].likes)maxLikes = tips[i].likes;
+                if(minLikes >= tips[i].likes)minLikes = tips[i].likes;
+            };
+            tips.settingsView = new Settings(minLikes, maxLikes);
+
             $scope.$watch('tips', function () {
                 $scope.$evalAsync(function () {
-                    $('#isotope-container').isotope({
-                        itemSelector: '.isotope-element',
-                        layoutMode: 'fitRows',
-                        sortBy: 'number',
-                        sortAscending: true
-                    });
+                    var isotope = startIsotope();
                 });
             })
 
@@ -35,9 +62,9 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
     };
 
     $scope.addlike = function (tip) {
+
         tip.likes++;
         var tip_id = tip._id;
-        console.log(tip);
         var tips = new Tips({
             _id: tip_id
         });
