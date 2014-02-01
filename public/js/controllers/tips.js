@@ -14,19 +14,6 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
         this.title = "";
     };
 
-    $scope.edit = function () {
-        $scope.tip = tip;
-        var tipId = $location.hash();
-        console.log("tipId: ",tipId);
-        var tip = new Tips({
-            _id: tipId
-        });
-        console.log(tip);
-        // tips.$update(function (response) {
-        //     $location.path("/");
-        // });
-    };
-
 
     $scope.show = function () {
         Tips.query(function (tips) {
