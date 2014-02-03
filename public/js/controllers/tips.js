@@ -19,7 +19,7 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
         Tips.query(function (tips) {
             $scope.tips = tips;
 
-            tips.linkEdit = 'tips/edit/#';
+            tips.linkEdit = 'tip/edit/';
 
             // show tips size
             function Settings (minLikes, maxLikes) {

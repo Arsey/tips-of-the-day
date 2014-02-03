@@ -10,7 +10,6 @@ var mongoose = require('mongoose'),
 /**
  * Create a tip
  */
-
 exports.create = function (req, res) {
     var tip = new Tip(req.body);
     console.log(tip);
@@ -45,20 +44,6 @@ exports.all = function (req, res) {
         }
     });
 }
-
-/**
-* Get one tip
-*/
-exports.getOneTip = function (req, res) {
-    var tipId = req.params['tipId'];
-    Tip.find({_id: tipId}).exec(function (err, tips) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.jsonp(tips)
-        }
-    });
-};
 
 /**
  * Add like
