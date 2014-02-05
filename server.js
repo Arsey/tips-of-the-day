@@ -50,7 +50,6 @@ require('./config/routes')(app);
 var port = process.env.PORT || config.port;
 app.listen(port);
 console.log('Express app started on port ' + port);
-console.log(process.env.PORT);
 
 //expose app
 exports = module.exports = app;

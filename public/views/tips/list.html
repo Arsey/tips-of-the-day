@@ -5,7 +5,7 @@
 		>
 			<div class="tips-tool">
 				<div data-ng-click="addlike(tip)" class="tips-addlikes tips-btn-smal"><span data-likes="{{tip.likes}}">{{tip.likes}}</span></div>
-				<a href="#!/{{tips.linkEdit}}{{tip._id}}" class="tips-edit tips-btn-smal"><span>Edit</span></a>
+				<a href="#!/{{tips.linkEdit}}?id={{tip._id}}" class="tips-edit tips-btn-smal"><span>Edit</span></a>
 				<div class="tips-share tips-btn-smal"><span>Copy link</span></div>
 			</div>
 			<p class="navbar-text navbar-right">Date<a href="#" class="navbar-link">{{tip.created | date:'medium'}}</a></p>

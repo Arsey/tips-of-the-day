@@ -26,16 +26,16 @@ exports.create = function (req, res) {
  * Show a tip
  */
 
-exports.show = function (req, res) {
-    res.jsonp(req.tip);
-};
+// exports.show = function (req, res) {
+//     res.jsonp(req.tip);
+// };
 
 /**
  * List of Tips
  */
 
 exports.all = function (req, res) {
-    console.log(Tip);
+    console.log("get all tips");
     Tip.find().sort('-likes').exec(function (err, tips) {
         if (err) {
             console.log(err);
@@ -61,4 +61,23 @@ exports.addlike = function(req, res){
         }
     });
     console.log("added like for: " + req.body._id);
+}
+
+ /**
+* Get one tip
+*/
+exports.getOneTip = function (req, res) {
+    var tipId = req.params['tipId'];
+    Tip.find({_id: tipId}).exec(function (err, tip) {
+        if (err) {
+            console.log(err);
+            console.log("get one tip:",tipId);
+        } else {
+            res.jsonp(tip)
+        }
+    });
+};
+
+exports.update = function(req, res){
+
 }

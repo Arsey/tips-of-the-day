@@ -1,5 +1,5 @@
-<section data-ng-controller="TipController">
-	<form class="form-horizontal" data-ng-init="edit()">
+<section data-ng-controller="TipsController">
+	<form class="form-horizontal" data-ng-init="getOneTip()" data-ng-submit="update()">
 		<div class="control-group">
 			<div class="control-label" for="text">Edit tips: {{tip._id}}</div>
 			<div class="controls">

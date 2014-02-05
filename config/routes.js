@@ -5,10 +5,8 @@ module.exports = function(app) {
 
     app.post('/tips', tips.create);
     app.post('/tips/:tipId', tips.addlike);
-
-    //Edit tip
-    var tip = require('../app/controllers/tip');
-    app.get('/tip/getonetip/:tipId', tip.getOneTip);
+    
+    app.get('/tips/getonetip/:tipId', tips.getOneTip);
 
     //Home route
     var index = require('../app/controllers/index');
