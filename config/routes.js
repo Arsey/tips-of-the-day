@@ -1,12 +1,12 @@
 module.exports = function(app) {
     //Article Routes
     var tips = require('../app/controllers/tips');
-    app.get('/tips', tips.all);
 
-    app.post('/tips', tips.create);
-    app.post('/tips/:tipId', tips.addlike);
-    
-    app.get('/tips/getonetip/:tipId', tips.getOneTip);
+    app.get('/tips', tips.getAllTips);
+    app.get('/tips/:tipId', tips.getTip);
+
+    app.post('/tips', tips.createTip);
+    app.post('/tips/:tipId', tips.updateTip);
 
     //Home route
     var index = require('../app/controllers/index');

@@ -1,7 +1,7 @@
 angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParams', '$location', 'Global', 'Tips', function ($scope, $routeParams, $location, Global, Tips) {
     $scope.global = Global;
 
-    $scope.create = function () {
+    $scope.createTip = function () {
         var tips = new Tips({
             text: this.text,
             likes: this.likes,
@@ -14,8 +14,7 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
         this.title = "";
     };
 
-
-    $scope.show = function () {
+    $scope.showTip = function () {
         Tips.query(function (tips) {
             $scope.tips = tips;
 
@@ -61,27 +60,26 @@ angular.module('tips.tips').controller('TipsController', ['$scope', '$routeParam
             })
 
         });
-
     };
 
-    $scope.addlike = function (tip) {
-        tip.likes++;
-        var tip_id = tip._id;
-        var tips = new Tips({
-            _id: tip_id
-        });
-        tips.$update(function (response) {
-            $location.path("/");
+    $scope.updateTip = function (tip) {
+        var tip = new Tips(tip);
+        tip.$update(tip, function(){
+            console.log("update updateTip: ", tip._id);
+        }, function(){
+            console.warn("error updateTip:", tip._id);
         });
     };
 
-    $scope.getOneTip = function (req, res) {
-        var tipId = $location.search().id;
-
+    $scope.getTip = function () {
+        Tips.query(function (tip) {
+            $scope.tip = tip;
+            console.log(tip);
+        });
     };
 
-    $scope.update = function(req, res){
-        console.log("update")
-    }
+    $scope.editTip = function(tip){
+        console.log("edit tip");
+    };
 
 }])
